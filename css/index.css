@@ -1,0 +1,280 @@
+/* ---------------------------------------- 默认css针对16:9标准比例屏幕微信----------------------------------------*/
+html,body,article{
+	position: fixed;
+	padding: 0;
+	margin: 0;
+	height: 100%!important;
+    width: 100%;
+	overflow: hidden;
+	-webkit-text-size-adjust:100%!important;
+	background-color: #76c5c0;
+}
+.none{
+	display: none;
+}
+.hide{
+	opacity: 0;
+}
+a{
+	cursor: pointer;
+}
+a, a:visited{
+	color: #fff;
+}
+section{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: fixed;
+    top:0;
+    left: 0;
+    z-index: 3;
+}
+aside{
+	position: fixed;
+	top:0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+    z-index: 19;
+    background-color: rgba(0,0,0,0.85);
+}
+img{
+	/* pointer-events: none; */
+}
+.full{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+/* public end */
+
+.lighting{
+	-webkit-animation: lighting 3s ease infinite;
+}
+@-webkit-keyframes lighting{
+	0%{opacity: 0.3;}
+	50%{opacity: 1;}
+	100%{opacity: 0.3;}
+}
+
+.handMoving{
+	-webkit-animation: handMoving 3s ease infinite;
+}
+@-webkit-keyframes handMoving{
+	0%{transform: translate(0, 0);}
+	25%{transform: translate(-0.5rem, 0);}
+	75%{transform: translate(0.5rem, 0);}
+	100%{transform: translate(0, 0);}
+}
+
+.updowning{
+	-webkit-animation: updowning 2s ease infinite;
+}
+@-webkit-keyframes updowning{
+	0%{transform: translate(0, 0);}
+	50%{transform: translate(0, -0.1rem);}
+	100%{transform: translate(0, 0);}
+}
+/* anime end */
+
+#loadingBox{
+	background: url(../images/loadingBox/bg.jpg) no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+#loadingBox .perNum{
+	position: absolute;
+	top: 57%;
+	left: 0;
+	width: 100%;
+	color: #fff;
+	text-align: center;
+	font-size: 0.48rem;
+}
+#loadingBox .logo{
+	position: absolute;
+	top: 45%;
+	left: 50%;
+	width: 4.08rem;
+	height: 2.65rem;
+	-webkit-mask: url(../images/loadingBox/logo.png);
+	-webkit-mask-size: 100%;
+	transform: translate(-50%, -50%);
+}
+#loadingBox .per{
+	position: absolute;
+	top: 0;
+	left: -4.08rem;
+	width: 8.16rem;
+	height: 100%;
+}
+#loadingBox .color{
+	float: left;
+	width: 4.08rem;
+	height: 100%;
+	background: linear-gradient(to right,#96b45e  0%,#1aa8d6 80%, #fff 100%);
+}
+#loadingBox .white{
+	float: left;
+	width: 4.08rem;
+	height: 100%;
+	background: white;
+}
+#loadingBox .logo2{
+	position: absolute;
+	top: 0.6rem;
+	left: 0.35rem;
+	width: 2rem;
+}
+#loadingBox .map,#loadingBox .baoshan{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+/* loadingBox end */
+
+#tipsBox{
+	background-color: rgba(0,0,0,0.8);
+}
+#tipsBox .hand{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 0.68rem;
+	margin: -0.35rem 0 0 -0.34rem;
+}
+#tipsBox .word{
+	position: absolute;
+	top: 55%;
+	left: 50%;
+	width: 1.75rem;
+	margin-left: -0.775rem;
+}
+/* tipsBox end */
+
+#mapBox .map{
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	background-color: #a4c080;
+}
+#mapBox .dialog{
+	position: absolute;
+	top: 9%;
+	left: 35.9%;
+	width: 23.6%;
+	height: 16.7%;
+	background-image: url(../images/mapBox/d4.png);
+}
+/* mapBox end */
+
+#roadBox .map{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 16.51rem;
+}
+#roadBox .map .metro,#roadBox .map .metro img{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 0;
+	overflow: hidden;
+}
+#roadBox .map .metro img{
+	height: 16.51rem;
+}
+#roadBox .map .station{
+	position: absolute;
+	bottom: 4.34rem;
+	left: 0;
+	width: 100%;
+	height: 0;
+	overflow: hidden;
+}
+#roadBox .station img{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 12.17rem;
+}
+#roadBox .location{
+	position: absolute;
+	top: 4rem;
+	left: 2.98rem;
+	width: 0.55rem;
+}
+#roadBox .pos{
+	position: absolute;
+	top: 1.75rem;
+	left: 2.65rem;
+	width: 3.17rem;
+}
+aside .close{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 1rem;
+	height: 1rem;
+	z-index: 9;
+}
+/* roadBox end */
+
+#sidewayBox{
+	background-color: #76be79;
+}
+#sidewayBox .word{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 6.57rem;
+	transform: translate(-50%, 3.5rem);
+}
+#sidewayBoxSwiper{
+	width: 7.5rem;
+	height: 9rem;
+}
+#sidewayBoxSwiper img{
+	width: 7.5rem;
+}
+.swiper-pagination-bullet{
+	background: none;
+	opacity: 1;
+	background-image: url(../images/common/c.png);
+	background-size: 100% 100%;
+}
+.swiper-pagination-bullet-active{
+	background: none;
+	background-image: url(../images/common/ca.png);
+	background-size: 100% 100%;
+}
+/* sidewayBox end */
+
+#schoolBox{
+	background-color: #76be79;
+}
+#schoolBox .word{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 6.55rem;
+	transform: translate(-50%, 3.5rem);
+}
+#schoolBoxSwiper{
+	width: 7.5rem;
+	height: 9rem;
+}
+#schoolBoxSwiper img{
+	width: 7.5rem;
+}
+/* schoolBox end */
+/*---------------------------------------- 15:9 ----------------------*/
+
+/*---------------------------------------- 18:9 ----------------------*/
