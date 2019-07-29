@@ -40,7 +40,7 @@ aside{
     background-color: rgba(0,0,0,0.85);
 }
 img{
-	/* pointer-events: none; */
+	pointer-events: none;
 }
 .full{
 	position: absolute;
@@ -52,12 +52,12 @@ img{
 /* public end */
 
 .lighting{
-	-webkit-animation: lighting 3s ease infinite;
+	-webkit-animation: lighting 2s ease infinite;
 }
 @-webkit-keyframes lighting{
-	0%{opacity: 0.3;}
-	50%{opacity: 1;}
-	100%{opacity: 0.3;}
+	0%{opacity: 1;}
+	50%{opacity: 0.3;}
+	100%{opacity: 1;}
 }
 
 .handMoving{
@@ -85,6 +85,18 @@ img{
 @-webkit-keyframes updowning2{
 	0%{transform: translate(0, 0);}
 	50%{transform: translate(0, 0.3rem);}
+	100%{transform: translate(0, 0);}
+}
+
+.updowning3{
+	-webkit-animation: updowning3 2s ease infinite;
+}
+@-webkit-keyframes updowning3{
+	0%{transform: translate(0, 0);}
+	20%{transform: translate(0, -0.2rem);}
+	40%{transform: translate(0, 0);}
+	60%{transform: translate(0, -0.2rem);}
+	80%{transform: translate(0, 0);}
 	100%{transform: translate(0, 0);}
 }
 /* anime end */
@@ -343,14 +355,14 @@ aside .close{
 	margin-left: -0.35rem;
 }
 
-#smartBox .swiperBox .word{
+#smartBox .moreSwiperBox .word{
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	width: 1.92rem;
 	transform: translate(-50%, 3.5rem);
 }
-#smartBox .swiperBox .moreBtn{
+#smartBox .moreSwiperBox .moreBtn{
 	position: absolute;
 	bottom: 0.5rem;
 	left: 50%;
@@ -362,7 +374,7 @@ aside .close{
 	text-align: center;
 	cursor: pointer;
 }
-#smartBox .swiperBox .moreBtn img{
+#smartBox .moreSwiperBox .moreBtn img{
 	margin-top: 0.28rem;
 	width: 0.89rem;
 }
@@ -413,6 +425,23 @@ aside .close{
 }
 #followBoxSwiper .cont .gotoFollow:first-child{
 	margin-top: 1.2rem;
+}
+#followBoxSwiper .intro{
+	background: url(../images/followBox/bg.jpg) no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+#followBoxSwiper .cont2{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 4.04rem;
+	height: 10.22rem;
+	transform: translate(-50%, -50%);
+	text-align: center;
+}
+#followBoxSwiper .cont2 .contact{
+	width: 2.78rem;
 }
 /* followBox end */
 /*---------------------------------------- 15:9 ----------------------*/

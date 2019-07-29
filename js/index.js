@@ -24,12 +24,28 @@ $(document).ready(function () {
 	//----------------------------------------加载页面图片----------------------------------------
 	function load_handler() {
 		var loader = new PxLoader();
+		loader.addImage('images/common/ar.png');
+		loader.addImage('images/common/bgm_off.png');
+		loader.addImage('images/common/bgm_on.png');
+		loader.addImage('images/common/c.png');
+		loader.addImage('images/common/ca.png');
+		loader.addImage('images/common/close.png');
+		loader.addImage('images/common/hand.png');
+		loader.addImage('images/common/tips.png');
+		loader.addImage('images/common/turn_lock.png');
+		loader.addImage('images/common/turn_no.png');
 		loader.addImage('images/common/turn_phone.png');
+		loader.addImage('images/common/turn_unlock.png');
+		loader.addImage('images/common/turn_yes.png');
+		loader.addImage('images/loadingBox/bg.jpg');
+		loader.addImage('images/loadingBox/bs.png');
+		loader.addImage('images/loadingBox/logo.png');
+		loader.addImage('images/loadingBox/map.png');
 
 		loader.addCompletionListener(function () {
 			icom.fadeIn(articleBox);
-			// load_more();
-			pageInit();
+			load_more();
+			// pageInit();
 			loader = null;
 		});
 		loader.start();
@@ -37,7 +53,55 @@ $(document).ready(function () {
 
 	function load_more() {
 		var loader = new PxLoader();
-		loader.addImage('images/common/turn_phone.png');
+		loader.addImage('images/share.jpg');
+		loader.addImage('images/smartBox/1.jpg');
+		loader.addImage('images/smartBox/1.png');
+		loader.addImage('images/smartBox/2.jpg');
+		loader.addImage('images/smartBox/2.png');
+		loader.addImage('images/smartBox/3.jpg');
+		loader.addImage('images/smartBox/3.png');
+		loader.addImage('images/smartBox/4.jpg');
+		loader.addImage('images/smartBox/4.png');
+		loader.addImage('images/smartBox/5.jpg');
+		loader.addImage('images/smartBox/5.png');
+		loader.addImage('images/smartBox/c1.png');
+		loader.addImage('images/smartBox/c2.png');
+		loader.addImage('images/smartBox/c3.png');
+		loader.addImage('images/smartBox/more.png');
+		loader.addImage('images/smartBox/t.png');
+		loader.addImage('images/sidewayBox/1.jpg');
+		loader.addImage('images/sidewayBox/2.jpg');
+		loader.addImage('images/sidewayBox/3.jpg');
+		loader.addImage('images/sidewayBox/w.png');
+		loader.addImage('images/schoolBox/1.jpg');
+		loader.addImage('images/schoolBox/2.jpg');
+		loader.addImage('images/schoolBox/3.jpg');
+		loader.addImage('images/schoolBox/w.png');
+		loader.addImage('images/roadBox/close.png');
+		loader.addImage('images/roadBox/r1.jpg');
+		loader.addImage('images/roadBox/r2.png');
+		loader.addImage('images/roadBox/r3.png');
+		loader.addImage('images/roadBox/r4.png');
+		loader.addImage('images/roadBox/r5.png');
+		loader.addImage('images/roadBox/r6.png');
+		loader.addImage('images/mapBox/1.png');
+		loader.addImage('images/mapBox/2.png');
+		loader.addImage('images/mapBox/3.png');
+		loader.addImage('images/mapBox/4.png');
+		loader.addImage('images/mapBox/5.png');
+		loader.addImage('images/mapBox/d1.png');
+		loader.addImage('images/mapBox/d2.png');
+		loader.addImage('images/mapBox/d3.png');
+		loader.addImage('images/mapBox/d4.png');
+		loader.addImage('images/followBox/1.png');
+		loader.addImage('images/followBox/2.png');
+		loader.addImage('images/followBox/3.png');
+		loader.addImage('images/followBox/4.png');
+		loader.addImage('images/followBox/5.png');
+		loader.addImage('images/followBox/6.png');
+		loader.addImage('images/followBox/bg.jpg');
+		loader.addImage('images/followBox/code.png');
+		loader.addImage('images/followBox/contact.png');
 
 		//实际加载进度
 		loader.addProgressListener(function (e) {
@@ -74,16 +138,26 @@ $(document).ready(function () {
 	var tipsBox = $("#tipsBox");
 
 	var mapX = 0;
+	var touchStartX = 0;
+	var moveX = 0;
+	var map = mapBox.find(".map");
+	var nowStep = "";
+	var store = mapBox.find(".store");
+	var sideway = mapBox.find(".sideway");
+	var school = mapBox.find(".school");
+	var metro = mapBox.find(".metro");
+	var storeFlag = true, sidewayFlag = true, schoolFlag = true, metroFlag = true, moveFlag = true, showDirTipsFlag = true;
 
-	var sidewayBoxSwiper,schoolBoxSwiper,smartBoxSwiper,followBoxSwiper;
+	var sidewayBoxSwiper, schoolBoxSwiper, smartBoxSwiper, followBoxSwiper;
 
 	/**
 	 * 页面初始化
 	 */
 	function pageInit() {
-		// openAnime();
+		SwiperInit();
+		openAnime();
 		eventInit();
-		DevelopTest();
+		// DevelopTest();
 		monitor_handler();
 	}//end func
 
@@ -94,8 +168,11 @@ $(document).ready(function () {
 		loadingBox.hide();
 		// QABox.show();
 		// showMapBox();
-		followBox.show();
-		SwiperInit();
+		setTimeout(function () {
+			showSmartBox();
+		}, 200)
+		// followBox.show();
+		// SwiperInit();
 	}
 
 	/**
@@ -103,14 +180,155 @@ $(document).ready(function () {
 	 */
 	function eventInit() {
 		$(".gotoFollow").on("click", gotoFollow);
+		$("#mapBox").on("click", showMapAnime);
+		$("#mapBox").on("touchstart", recordStart);
+		$("#mapBox").on("touchmove", moveMap);
+		$(".moreBtn").on("touchend", showFollowBox);
 
 		$(".limitBtn").on("touchend", limitClick);
 	}
 
 	/**
+	 * 显示旋转的提示
+	 */
+	function showDirTips() {
+		if (showDirTipsFlag) {
+			showDirTipsFlag = false;
+			timer = setTimeout(function () {
+				icom.fadeOut($("#turnturnBoxLandscapeBox"));
+			}, 5000);
+			icom.popOn($("#turnturnBoxLandscapeBox"), {
+				onClose: function () {
+					clearTimeout(timer);
+				}
+			});
+		}
+	}
+
+	/**
+	 * 记录起始坐标点
+	 */
+	function recordStart(e) {
+		touchStartX = e.originalEvent.touches[0].pageX;
+	}
+
+	/**
+	 * 移动地图
+	 */
+	function moveMap(e) {
+		if (moveFlag) {
+			var dif = e.originalEvent.touches[0].pageX - touchStartX;
+			touchStartX = e.originalEvent.touches[0].pageX;
+			dif = parseInt(dif);
+			moveX += dif;
+			var unit = mapX / 3;
+			moveX = moveX <= -(mapX - unit - os.windowW) + 10 ? -(mapX - unit - os.windowW) + 10 : moveX;
+			moveX = moveX >= unit - 10 ? unit - 10 : moveX;
+			map.css({ x: moveX });
+		}
+	}
+
+	/**
+	 * 显示地图页面相应模块
+	 */
+	function showMapAnime() {
+		if (nowStep == "store" && storeFlag) {
+			map.transition({ x: 0 }, 200);
+			storeFlag = false;
+			store.removeClass("updowning3");
+			mapBox.find(".d4").transition({ height: "100%" }, 300);
+			mapBox.find(".d1").transition({ width: "100%", delay: 300 }, 600);
+			mapBox.find(".d2").transition({ width: "100%", delay: 900 }, 600);
+			mapBox.find(".d3").transition({ width: "100%", delay: 1500 }, 600, function () {
+				setTimeout(function () {
+					mapBoxAnime("metro");
+				}, 1000);
+			});
+		}
+		else if (nowStep == "sideway" && sidewayFlag) {
+			sidewayFlag = false;
+			icom.popOn(sidewayBox, {
+				onClose: function () {
+					mapBoxAnime("school");
+				}
+			});
+		}
+		else if (nowStep == "school" && schoolFlag) {
+			schoolFlag = false;
+			icom.popOn(schoolBox, {
+				onClose: function () {
+					showSmartBox();
+				}
+			});
+		}
+		else if (nowStep == "metro" && metroFlag) {
+			metroFlag = false;
+			metroAnime();
+		}
+	}
+
+	/**
+	 * 显示SmartBox
+	 */
+	function showSmartBox() {
+		icom.fadeIn(smartBox);
+		var title = smartBox.find(".title");
+		var c1 = smartBox.find(".c1");
+		var c2 = smartBox.find(".c2");
+		var c3 = smartBox.find(".c3");
+		var ar = smartBox.find(".ar");
+		var introBox = smartBox.find(".introBox");
+		var moreSwiperBox = smartBox.find(".moreSwiperBox");
+
+		title.css({ y: "0.5rem" }).transition({ opacity: 1, y: 0, delay: 300 }, 300);
+		c1.css({ y: "-0.5rem", x: "0.5rem" }).transition({ opacity: 1, y: 0, x: 0, delay: 500 }, 500);
+		c2.transition({ opacity: 1, delay: 500 }, 500);
+		c3.css({ y: "0.5rem", x: "-0.5rem" }).transition({ opacity: 1, y: 0, x: 0, delay: 500 }, 500);
+		ar.transition({ opacity: 1, delay: 800 }, 300, function () {
+			smartBox.one("swipeup", function () {
+				introBox.transition({ y: "-100%" });
+				moreSwiperBox.show().css({ y: "100%" }).transition({ y: 0 });
+			});
+		});
+	}
+
+	/**
+	 * 显示楼层页面
+	 */
+	function showFollowBox() {
+		mapBox.hide();
+		followBox.show();
+		icom.fadeOut(smartBox);
+	}
+
+	/**
+	 * 地铁的动画
+	 */
+	function metroAnime() {
+		icom.popOn(roadBox, {
+			onClose: function () {
+				mapBoxAnime("sideway");
+			}
+		});
+
+		var metro = roadBox.find(".metro");
+		var station = roadBox.find(".station");
+		var location = roadBox.find(".location");
+		var pos = roadBox.find(".pos");
+
+		metro.transition({ height: "16.51rem", delay: 500 }, 1500);
+		location.transition({ opacity: 1, delay: 1000 }, 200);
+		pos.transition({ opacity: 1, delay: 2500 });
+		metro.find("img").eq(1).transition({ opacity: 0, delay: 3500 });
+		station.transition({ height: "12.17rem", delay: 3500 }, 1000, 'linear', function () {
+			icom.fadeIn(roadBox.find(".close"));
+		});
+	}
+
+	/**
 	 * 去到相应楼层
 	 */
-	function gotoFollow(){
+	function gotoFollow() {
 		var id = $(this).attr("data-val");
 		followBoxSwiper.slideTo(id);
 	}
@@ -121,7 +339,7 @@ $(document).ready(function () {
 	function SwiperInit() {
 		sidewayBoxSwiper = new Swiper('#sidewayBoxSwiper', {
 			// autoplay: true,
-			delay: 1000,
+			// delay: 1000,
 			loop: true,
 			pagination: {
 				el: '.swiper-pagination'
@@ -130,7 +348,7 @@ $(document).ready(function () {
 
 		schoolBoxSwiper = new Swiper('#schoolBoxSwiper', {
 			// autoplay: true,
-			delay: 1000,
+			// delay: 1000,
 			loop: true,
 			pagination: {
 				el: '.swiper-pagination'
@@ -141,19 +359,19 @@ $(document).ready(function () {
 		var block = smartBox.find(".word");
 		smartBoxSwiper = new Swiper('#smartBoxSwiper', {
 			// autoplay: true,
-			delay: 1000,
+			// delay: 1000,
 			loop: false,
 			pagination: {
 				el: '.swiper-pagination'
 			},
 			on: {
 				transitionStart: function () {
-					if(smartBoxSwiper && now != smartBoxSwiper.realIndex){
+					if (smartBoxSwiper && now != smartBoxSwiper.realIndex) {
 						now = smartBoxSwiper.realIndex;
-						block.transition({opacity:0},150,function(){
-							block[0].src = "images/smartBox/"+(now+1)+".png";
+						block.transition({ opacity: 0 }, 150, function () {
+							block[0].src = "images/smartBox/" + (now + 1) + ".png";
 						});
-						block.transition({opacity:1,delay:150},150);
+						block.transition({ opacity: 1, delay: 150 }, 150);
 					}
 				}
 			}
@@ -163,8 +381,19 @@ $(document).ready(function () {
 			// autoplay: true,
 			// delay: 1000,
 			loop: false,
-			direction:"vertical"
+			direction: "vertical",
+			on: {
+				transitionStart: showDirTips
+			}
 		});
+
+		setTimeout(function () {
+			followBox.removeClass("hide").hide();
+			sidewayBox.removeClass("hide").hide();
+			schoolBox.removeClass("hide").hide();
+			smartBox.removeClass("hide").hide();
+			smartBox.find(".moreSwiperBox").removeClass("hide").hide();
+		}, 100);
 	}
 
 	/**
@@ -177,7 +406,7 @@ $(document).ready(function () {
 		icom.fadeOut(part1);
 		icom.fadeIn(part2, 500, function () {
 			setTimeout(function () {
-				baoshan.transition({ scale: 4, x: "-0.8rem", y: "2rem" }, 2000, showMapBox)
+				baoshan.transition({ scale: 4, x: "-0.8rem", y: "2rem" }, 2000, showMapBox);
 			}, 500)
 		});
 	}
@@ -188,14 +417,14 @@ $(document).ready(function () {
 	function showMapBox() {
 		var timer = setTimeout(function () {
 			icom.fadeOut(tipsBox);
-			mapBoxAnime();
+			mapBoxAnime("store");
 		}, 3000);
 		mapBox.show();
 		icom.fadeOut(loadingBox, 500, function () {
 			icom.popOn(tipsBox, {
-				onClse: function () {
+				onClose: function () {
+					mapBoxAnime("store");
 					clearTimeout(timer);
-					mapBoxAnime();
 				}
 			});
 		});
@@ -223,8 +452,25 @@ $(document).ready(function () {
 	/**
 	 * 地图页面动画
 	 */
-	function mapBoxAnime() {
-
+	function mapBoxAnime(step) {
+		nowStep = step;
+		if (step == "store") {
+			store.addClass("updowning3");
+		}
+		else if (step == "metro") {
+			icom.fadeOut(mapBox.find(".dialog"));
+			metro.addClass("lighting");
+		}
+		else if (step == "sideway") {
+			map.transition({ x: 0 }, 200);
+			metro.removeClass("lighting");
+			sideway.addClass("lighting");
+		}
+		else if (step == "school") {
+			map.transition({ x: 0 }, 200);
+			sideway.removeClass("lighting");
+			school.addClass("lighting");
+		}
 	}
 
 	/**
