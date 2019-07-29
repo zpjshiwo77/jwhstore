@@ -75,6 +75,8 @@ $(document).ready(function () {
 
 	var mapX = 0;
 
+	var sidewayBoxSwiper,schoolBoxSwiper,smartBoxSwiper,followBoxSwiper;
+
 	/**
 	 * 页面初始化
 	 */
@@ -89,9 +91,10 @@ $(document).ready(function () {
 	 * 开发测试使用
 	 */
 	function DevelopTest() {
-		// loadingBox.hide();
+		loadingBox.hide();
 		// QABox.show();
 		// showMapBox();
+		followBox.show();
 		SwiperInit();
 	}
 
@@ -99,15 +102,25 @@ $(document).ready(function () {
 	 * 事件初始化
 	 */
 	function eventInit() {
+		$(".gotoFollow").on("click", gotoFollow);
+
 		$(".limitBtn").on("touchend", limitClick);
+	}
+
+	/**
+	 * 去到相应楼层
+	 */
+	function gotoFollow(){
+		var id = $(this).attr("data-val");
+		followBoxSwiper.slideTo(id);
 	}
 
 	/**
 	 * Swiper初始化
 	 */
 	function SwiperInit() {
-		var sidewayBoxSwiper = new Swiper('#sidewayBoxSwiper', {
-			autoplay: true,
+		sidewayBoxSwiper = new Swiper('#sidewayBoxSwiper', {
+			// autoplay: true,
 			delay: 1000,
 			loop: true,
 			pagination: {
@@ -115,13 +128,42 @@ $(document).ready(function () {
 			}
 		});
 
-		var schoolBoxSwiper = new Swiper('#schoolBoxSwiper', {
-			autoplay: true,
+		schoolBoxSwiper = new Swiper('#schoolBoxSwiper', {
+			// autoplay: true,
 			delay: 1000,
 			loop: true,
 			pagination: {
 				el: '.swiper-pagination'
 			}
+		});
+
+		var now = 0;
+		var block = smartBox.find(".word");
+		smartBoxSwiper = new Swiper('#smartBoxSwiper', {
+			// autoplay: true,
+			delay: 1000,
+			loop: false,
+			pagination: {
+				el: '.swiper-pagination'
+			},
+			on: {
+				transitionStart: function () {
+					if(smartBoxSwiper && now != smartBoxSwiper.realIndex){
+						now = smartBoxSwiper.realIndex;
+						block.transition({opacity:0},150,function(){
+							block[0].src = "images/smartBox/"+(now+1)+".png";
+						});
+						block.transition({opacity:1,delay:150},150);
+					}
+				}
+			}
+		});
+
+		followBoxSwiper = new Swiper('#followBoxSwiper', {
+			// autoplay: true,
+			// delay: 1000,
+			loop: false,
+			direction:"vertical"
 		});
 	}
 
@@ -168,6 +210,13 @@ $(document).ready(function () {
 		mapBox.find(".map").css({
 			width: mapX,
 			left: -mapX / 3
+		});
+		var dialog = mapBox.find(".dialog");
+		var x = dialog.width();
+		var y = dialog.height();
+		dialog.find("img").css({
+			width: x,
+			height: y
 		});
 	}
 

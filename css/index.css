@@ -78,6 +78,15 @@ img{
 	50%{transform: translate(0, -0.1rem);}
 	100%{transform: translate(0, 0);}
 }
+
+.updowning2{
+	-webkit-animation: updowning2 1.5s ease infinite;
+}
+@-webkit-keyframes updowning2{
+	0%{transform: translate(0, 0);}
+	50%{transform: translate(0, 0.3rem);}
+	100%{transform: translate(0, 0);}
+}
 /* anime end */
 
 #loadingBox{
@@ -169,7 +178,32 @@ img{
 	left: 35.9%;
 	width: 23.6%;
 	height: 16.7%;
-	background-image: url(../images/mapBox/d4.png);
+}
+#mapBox .dialog .d4{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 0%;
+	overflow: hidden;
+}
+#mapBox .dialog .d4 img{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+#mapBox .dialog .row{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0%;
+	height: 100%;
+	overflow: hidden;
+}
+#mapBox .dialog .row img{
+	position: absolute;
+	top: 0;
+	left: 0;
 }
 /* mapBox end */
 
@@ -275,6 +309,117 @@ aside .close{
 	width: 7.5rem;
 }
 /* schoolBox end */
-/*---------------------------------------- 15:9 ----------------------*/
 
+#smartBox{
+	background-color: #f19149;
+}
+#smartBox .introBox .cont{
+	position: absolute;
+	top: 50%;
+	left: 0;
+	width: 100%;
+	height: 10.8rem;
+	margin-top: -5.4rem;
+}
+#smartBox .introBox .cont .title{
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 6.17rem;
+	margin-left: -3.085rem;
+}
+#smartBox .introBox .cont .circle{
+	position: absolute;
+	top: 1.6rem;
+	left: 50%;
+	width: 6.72rem;
+	margin-left: -3.36rem;
+}
+#smartBox .introBox .cont .ar{
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	width: 0.69rem;
+	margin-left: -0.35rem;
+}
+
+#smartBox .swiperBox .word{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 1.92rem;
+	transform: translate(-50%, 3.5rem);
+}
+#smartBox .swiperBox .moreBtn{
+	position: absolute;
+	bottom: 0.5rem;
+	left: 50%;
+	width: 1.5rem;
+	height: 0.8rem;
+	margin-left: -0.75rem;
+	background-color: #fff;
+	border-radius: 0.1rem;
+	text-align: center;
+	cursor: pointer;
+}
+#smartBox .swiperBox .moreBtn img{
+	margin-top: 0.28rem;
+	width: 0.89rem;
+}
+#smartBoxSwiper{
+	width: 7.5rem;
+	height: 9rem;
+}
+#smartBoxSwiper img{
+	width: 7.5rem;
+}
+/* #smartBox end */
+
+#followBox{
+	background-color: #84ccc9;
+
+}
+#followBoxSwiper{
+	width: 100%;
+	height: 100%;
+}
+#followBoxSwiper .ar{
+	position: absolute;
+	bottom: 0.5rem;
+	left: 50%;
+	width: 0.69rem;
+	margin-left: -0.35rem;
+}
+#followBoxSwiper .cont{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 7.06rem;
+	height: 10.21rem;
+	transform: translate(-50%, -50%);
+}
+#followBoxSwiper .cont img{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+#followBoxSwiper .cont .gotoFollow{
+	position: relative;
+	z-index: 9;
+	width: 100%;
+	height: 16%;
+	margin-bottom: 0.1rem;
+}
+#followBoxSwiper .cont .gotoFollow:first-child{
+	margin-top: 1.2rem;
+}
+/* followBox end */
+/*---------------------------------------- 15:9 ----------------------*/
+.screen189 #smartBox .swiperBox .moreBtn{
+	bottom: 1rem;
+}
 /*---------------------------------------- 18:9 ----------------------*/
+.screen159 #smartBox .swiperBox .moreBtn{
+	bottom: 0.1rem;
+}
