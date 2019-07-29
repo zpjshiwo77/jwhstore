@@ -132,7 +132,7 @@ $(document).ready(function () {
 		loader.addProgressListener(function (e) {
 			var per = Math.round(e.completedCount / e.totalCount * 50);
 			loadPer.html('LOADING ' + per + '%');
-			loadPerBar.css({ x: per / 100 * 4.08 + "rem" });
+			loadPerBar.css({ x: per / 100 * 6.08 + "rem" });
 		});
 
 		loader.addCompletionListener(function () {
@@ -148,7 +148,7 @@ $(document).ready(function () {
 		per += imath.randomRange(1, 3);
 		per = per > 100 ? 100 : per;
 		loadPer.html('LOADING ' + per + '%');
-		loadPerBar.css({ x: per / 100 * 4.08 + "rem" });
+		loadPerBar.css({ x: per / 100 * 6.08 + "rem" });
 		if (per == 100) setTimeout(pageInit, 200);
 		else setTimeout(load_timer, 33, per);
 	}//edn func
@@ -309,11 +309,11 @@ $(document).ready(function () {
 
 		var time = 800;
 
-		title.css({ y: "0.5rem" }).transition({ opacity: 1, y: 0, delay: 300 }, time);
-		c1.css({ y: "-0.5rem", x: "0.5rem" }).transition({ opacity: 1, y: 0, x: 0, delay: 300 + time }, time);
-		c2.transition({ opacity: 1, delay: 300 + time }, time);
-		c3.css({ y: "0.5rem", x: "-0.5rem" }).transition({ opacity: 1, y: 0, x: 0, delay: 300 + time }, time);
-		ar.transition({ opacity: 1, delay: time * 1.7 }, 300, function () {
+		title.css({ y: "1rem" }).transition({ opacity: 1, y: 0, delay: 300 }, time);
+		c2.transition({ opacity: 1, delay: time }, time);
+		c1.addClass("Emphasize1");
+		c3.addClass("Emphasize2");
+		ar.transition({ opacity: 1, delay: 2000}, 300, function () {
 			smartBox.one("swipeup", function () {
 				introBox.transition({ y: "-100%" });
 				moreSwiperBox.show().css({ y: "100%" }).transition({ y: 0 });
@@ -344,12 +344,18 @@ $(document).ready(function () {
 		var station = roadBox.find(".station");
 		var location = roadBox.find(".location");
 		var pos = roadBox.find(".pos");
+		var point = roadBox.find(".point");
 
 		metro.transition({ height: "16.51rem", delay: 500 }, 1500);
 		location.transition({ opacity: 1, delay: 1000 }, 200);
 		pos.transition({ opacity: 1, delay: 2500 });
-		metro.find("img").eq(1).transition({ opacity: 0, delay: 3500 });
-		station.transition({ height: "12.17rem", delay: 3500 }, 1500, 'linear', function () {
+
+		point.transition({ opacity: 1, delay: 3500},function(){
+			point.addClass("lighting2");
+		});
+
+		metro.find("img").eq(1).transition({ opacity: 0, delay: 5000 });
+		station.transition({ height: "12.17rem", delay: 5000 }, 3000, 'linear', function () {
 			icom.fadeIn(roadBox.find(".close"));
 		});
 	}
@@ -436,8 +442,11 @@ $(document).ready(function () {
 		icom.fadeOut(part1);
 		icom.fadeIn(logo);
 		icom.fadeIn(part2, 500, function () {
-			part2.transition({ scale: 2, x: "-0.8rem", y: "3rem", delay: 500 }, 1200);
-			baoshan.transition({ scale: 2, x: "-0.4rem", y: "1rem", delay: 1600 }, 1500, showMapBox);
+			baoshan.transition({x: "-0.6rem", y: "2rem"}, 1000).transition({ scale: 5, x: "-4rem", y: "10rem"}, 2500,"linear");
+			part2.find(".map").transition({ scale: 1.2,delay:1000}, 2500,"linear");
+			setTimeout(function(){
+				showMapBox();
+			},2500);
 		});
 	}
 
@@ -448,9 +457,9 @@ $(document).ready(function () {
 		var timer = setTimeout(function () {
 			icom.fadeOut(tipsBox);
 			mapBoxAnime("store");
-		}, 3000);
+		}, 3500);
 		mapBox.show();
-		icom.fadeOut(loadingBox, 500, function () {
+		icom.fadeOut(loadingBox, 1000, function () {
 			icom.popOn(tipsBox, {
 				onClose: function () {
 					mapBoxAnime("store");

@@ -60,6 +60,17 @@ img{
 	100%{opacity: 1;}
 }
 
+.lighting2{
+	-webkit-animation: lighting2 1.5s ease forwards;
+}
+@-webkit-keyframes lighting2{
+	0%{opacity: 1;}
+	25%{opacity: 0.3;}
+	50%{opacity: 1;}
+	75%{opacity: 0.3;}
+	100%{opacity: 1;}
+}
+
 .handMoving{
 	-webkit-animation: handMoving 3s ease infinite;
 }
@@ -108,6 +119,17 @@ img{
 	80%{transform: translate(0, 0);}
 	100%{transform: translate(0, 0);}
 }
+
+.Emphasize1{
+	-webkit-animation: Emphasize 1.5s ease forwards;
+}
+.Emphasize2{
+	-webkit-animation: Emphasize 1.5s 0.5s ease forwards;
+}
+@-webkit-keyframes Emphasize{
+	0%{transform: scale(0, 0);opacity: 0;}
+	100%{transform: scale(1, 1);opacity: 1;}
+}
 /* anime end */
 
 #loadingBox{
@@ -137,15 +159,24 @@ img{
 #loadingBox .per{
 	position: absolute;
 	top: 0;
-	left: -4.08rem;
+	left: -6.08rem;
 	width: 8.16rem;
 	height: 100%;
 }
 #loadingBox .color{
 	float: left;
-	width: 4.08rem;
+	width: 6.08rem;
 	height: 100%;
-	background: linear-gradient(to right,#96b45e  0%,#1aa8d6 80%, #fff 100%);
+}
+#loadingBox .color .up{
+	width: 6.08rem;
+	height: 1.55rem;
+	background: linear-gradient(to right,#00699f  0%,#49a7c5 35%,#00699f  70% , #fff 100%);
+}
+#loadingBox .color .down{
+	width: 6.08rem;
+	height: 1.1rem;
+	background: linear-gradient(to right,#58595b  0%,#58595b 70%, #fff 100%);
 }
 #loadingBox .white{
 	float: left;
@@ -268,9 +299,17 @@ img{
 #roadBox .map .metro img{
 	height: 16.51rem;
 }
+#roadBox .map .point{
+	position: absolute;
+	top:0;
+	left: 0;
+	width: 100%;
+	height: 12.17rem;
+	overflow: hidden;
+}
 #roadBox .map .station{
 	position: absolute;
-	bottom: 4.34rem;
+	top:0;
 	left: 0;
 	width: 100%;
 	height: 0;
@@ -278,7 +317,7 @@ img{
 }
 #roadBox .station img{
 	position: absolute;
-	bottom: 0;
+	top: 0;
 	left: 0;
 	height: 12.17rem;
 }
@@ -371,12 +410,24 @@ aside .close{
 	width: 6.17rem;
 	margin-left: -3.085rem;
 }
-#smartBox .introBox .cont .circle{
+#smartBox .introBox .cont .c2{
 	position: absolute;
 	top: 1.6rem;
 	left: 50%;
 	width: 6.72rem;
 	margin-left: -3.36rem;
+}
+#smartBox .introBox .cont .c1{
+	position: absolute;
+	top: 1.6rem;
+	right: 0.39rem;
+	width: 4.17rem;
+}
+#smartBox .introBox .cont .c3{
+	position: absolute;
+	top: 5.75rem;
+	left: 0.39rem;
+	width: 4.17rem;
 }
 #smartBox .introBox .cont .ar{
 	position: absolute;
