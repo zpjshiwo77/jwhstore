@@ -17,8 +17,33 @@ $(document).ready(function () {
 			if (os.screenProp < 0.54) articleBox.addClass("screen189");
 			if (os.screenProp > 0.64) articleBox.addClass("screen159");
 			load_handler();
+			sound_handler();
 		});
 	}//edn func
+
+	function sound_handler() {
+		if (os.weixin) {
+			var wsb = window;
+			if (wsb.WeixinJSBridge) {
+				try {
+					wsb.WeixinJSBridge.invoke("getNetworkType", {}, sound_creat);
+				}
+				catch (e) {
+					wx.ready(sound_creat);
+				}
+			}
+			else {
+				document.addEventListener("WeixinJSBridgeReady", sound_creat, false);
+			}
+		} else {
+			sound_creat();
+		}
+	}//edn func
+
+	function sound_creat() {
+		document.removeEventListener("WeixinJSBridgeReady", sound_creat);
+		ibgm.init({ src: 'audio/bgm.mp3', autoplay: true });
+	}//end func
 
 
 	//----------------------------------------加载页面图片----------------------------------------
@@ -234,8 +259,10 @@ $(document).ready(function () {
 	function showMapAnime() {
 		if (nowStep == "store" && storeFlag) {
 			map.transition({ x: 0 }, 200);
+			moveX = 0;
 			storeFlag = false;
 			store.removeClass("updowning3");
+			mapBox.find(".hand1").hide();
 			mapBox.find(".d4").transition({ height: "100%" }, 300);
 			mapBox.find(".d1").transition({ width: "100%", delay: 300 }, 600);
 			mapBox.find(".d2").transition({ width: "100%", delay: 900 }, 600);
@@ -280,11 +307,13 @@ $(document).ready(function () {
 		var introBox = smartBox.find(".introBox");
 		var moreSwiperBox = smartBox.find(".moreSwiperBox");
 
-		title.css({ y: "0.5rem" }).transition({ opacity: 1, y: 0, delay: 300 }, 300);
-		c1.css({ y: "-0.5rem", x: "0.5rem" }).transition({ opacity: 1, y: 0, x: 0, delay: 500 }, 500);
-		c2.transition({ opacity: 1, delay: 500 }, 500);
-		c3.css({ y: "0.5rem", x: "-0.5rem" }).transition({ opacity: 1, y: 0, x: 0, delay: 500 }, 500);
-		ar.transition({ opacity: 1, delay: 800 }, 300, function () {
+		var time = 800;
+
+		title.css({ y: "0.5rem" }).transition({ opacity: 1, y: 0, delay: 300 }, time);
+		c1.css({ y: "-0.5rem", x: "0.5rem" }).transition({ opacity: 1, y: 0, x: 0, delay: 300 + time }, time);
+		c2.transition({ opacity: 1, delay: 300 + time }, time);
+		c3.css({ y: "0.5rem", x: "-0.5rem" }).transition({ opacity: 1, y: 0, x: 0, delay: 300 + time }, time);
+		ar.transition({ opacity: 1, delay: time * 1.7 }, 300, function () {
 			smartBox.one("swipeup", function () {
 				introBox.transition({ y: "-100%" });
 				moreSwiperBox.show().css({ y: "100%" }).transition({ y: 0 });
@@ -320,7 +349,7 @@ $(document).ready(function () {
 		location.transition({ opacity: 1, delay: 1000 }, 200);
 		pos.transition({ opacity: 1, delay: 2500 });
 		metro.find("img").eq(1).transition({ opacity: 0, delay: 3500 });
-		station.transition({ height: "12.17rem", delay: 3500 }, 1000, 'linear', function () {
+		station.transition({ height: "12.17rem", delay: 3500 }, 1500, 'linear', function () {
 			icom.fadeIn(roadBox.find(".close"));
 		});
 	}
@@ -402,12 +431,13 @@ $(document).ready(function () {
 	function openAnime() {
 		var part1 = loadingBox.find(".part1");
 		var part2 = loadingBox.find(".part2");
+		var logo = loadingBox.find(".logo2");
 		var baoshan = loadingBox.find(".baoshan");
 		icom.fadeOut(part1);
+		icom.fadeIn(logo);
 		icom.fadeIn(part2, 500, function () {
-			setTimeout(function () {
-				baoshan.transition({ scale: 4, x: "-0.8rem", y: "2rem" }, 2000, showMapBox);
-			}, 500)
+			part2.transition({ scale: 2, x: "-0.8rem", y: "3rem", delay: 500 }, 1200);
+			baoshan.transition({ scale: 2, x: "-0.4rem", y: "1rem", delay: 1600 }, 1500, showMapBox);
 		});
 	}
 
@@ -456,20 +486,28 @@ $(document).ready(function () {
 		nowStep = step;
 		if (step == "store") {
 			store.addClass("updowning3");
+			mapBox.find(".hand1").transition({ opacity: 1 });
 		}
 		else if (step == "metro") {
 			icom.fadeOut(mapBox.find(".dialog"));
 			metro.addClass("lighting");
+			mapBox.find(".hand2").transition({ opacity: 1 });
 		}
 		else if (step == "sideway") {
 			map.transition({ x: 0 }, 200);
+			moveX = 0;
 			metro.removeClass("lighting");
 			sideway.addClass("lighting");
+			mapBox.find(".hand2").hide();
+			mapBox.find(".hand3").transition({ opacity: 1 });
 		}
 		else if (step == "school") {
 			map.transition({ x: 0 }, 200);
+			moveX = 0;
 			sideway.removeClass("lighting");
 			school.addClass("lighting");
+			mapBox.find(".hand3").hide();
+			mapBox.find(".hand4").transition({ opacity: 1 });
 		}
 	}
 

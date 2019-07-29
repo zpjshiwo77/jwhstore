@@ -70,6 +70,15 @@ img{
 	100%{transform: translate(0, 0);}
 }
 
+.handMoving2{
+	-webkit-animation: handMoving2 1.2s ease infinite;
+}
+@-webkit-keyframes handMoving2{
+	0%{transform: translate(0, 0);}
+	50%{transform: translate(0.3rem, 0.4rem);}
+	100%{transform: translate(0, 0);}
+}
+
 .updowning{
 	-webkit-animation: updowning 2s ease infinite;
 }
@@ -149,6 +158,7 @@ img{
 	top: 0.6rem;
 	left: 0.35rem;
 	width: 2rem;
+	z-index: 9;
 }
 #loadingBox .map,#loadingBox .baoshan{
 	position: absolute;
@@ -216,6 +226,27 @@ img{
 	position: absolute;
 	top: 0;
 	left: 0;
+}
+#mapBox .hand{
+	position: absolute;
+	width: 3.7%;
+	height: 6.2%;
+}
+#mapBox .hand1{
+	top: 33%;
+	left: 53%;
+}
+#mapBox .hand2{
+	top: 40%;
+	left: 56%;
+}
+#mapBox .hand3{
+	top: 22%;
+	left: 58%;
+}
+#mapBox .hand4{
+	top: 57%;
+	left: 40%;
 }
 /* mapBox end */
 
