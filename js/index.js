@@ -6,7 +6,6 @@ $(document).ready(function () {
 	var windowScale = window.innerWidth / 750;
 	var loadingBox = $("#loadingBox");
 	var loadPer = loadingBox.find(".perNum");
-	var loadPerBar = loadingBox.find(".per");
 
 	//----------------------------------------页面初始化----------------------------------------
 	icom.init(init);//初始化
@@ -50,6 +49,10 @@ $(document).ready(function () {
 	function load_handler() {
 		var loader = new PxLoader();
 		loader.addImage('images/common/ar.png');
+		loader.addImage('images/common/ar2.png');
+		loader.addImage('images/common/ar3.png');
+		loader.addImage('images/common/ar4.png');
+		loader.addImage('images/common/ar5.png');
 		loader.addImage('images/common/bgm_off.png');
 		loader.addImage('images/common/bgm_on.png');
 		loader.addImage('images/common/c.png');
@@ -62,9 +65,14 @@ $(document).ready(function () {
 		loader.addImage('images/common/turn_phone.png');
 		loader.addImage('images/common/turn_unlock.png');
 		loader.addImage('images/common/turn_yes.png');
+		loader.addImage('images/loadingBox/1.png');
+		loader.addImage('images/loadingBox/2.png');
+		loader.addImage('images/loadingBox/3.png');
+		loader.addImage('images/loadingBox/b2.png');
 		loader.addImage('images/loadingBox/bg.jpg');
 		loader.addImage('images/loadingBox/bs.png');
-		loader.addImage('images/loadingBox/logo.png');
+		loader.addImage('images/loadingBox/l1.png');
+		loader.addImage('images/loadingBox/l2.png');
 		loader.addImage('images/loadingBox/map.png');
 
 		loader.addCompletionListener(function () {
@@ -79,29 +87,73 @@ $(document).ready(function () {
 	function load_more() {
 		var loader = new PxLoader();
 		loader.addImage('images/share.jpg');
-		loader.addImage('images/smartBox/1.jpg');
-		loader.addImage('images/smartBox/1.png');
-		loader.addImage('images/smartBox/2.jpg');
-		loader.addImage('images/smartBox/2.png');
-		loader.addImage('images/smartBox/3.jpg');
-		loader.addImage('images/smartBox/3.png');
-		loader.addImage('images/smartBox/4.jpg');
-		loader.addImage('images/smartBox/4.png');
-		loader.addImage('images/smartBox/5.jpg');
-		loader.addImage('images/smartBox/5.png');
-		loader.addImage('images/smartBox/c1.png');
-		loader.addImage('images/smartBox/c2.png');
-		loader.addImage('images/smartBox/c3.png');
-		loader.addImage('images/smartBox/more.png');
-		loader.addImage('images/smartBox/t.png');
-		loader.addImage('images/sidewayBox/1.jpg');
-		loader.addImage('images/sidewayBox/2.jpg');
-		loader.addImage('images/sidewayBox/3.jpg');
-		loader.addImage('images/sidewayBox/w.png');
-		loader.addImage('images/schoolBox/1.jpg');
-		loader.addImage('images/schoolBox/2.jpg');
-		loader.addImage('images/schoolBox/3.jpg');
-		loader.addImage('images/schoolBox/w.png');
+		loader.addImage('images/storeBox/1.png');
+		loader.addImage('images/storeBox/2.png');
+		loader.addImage('images/storeBox/3.png');
+		loader.addImage('images/storeBox/bg.png');
+		loader.addImage('images/storeBox/i.png');
+		loader.addImage('images/storeBox/s.png');
+		loader.addImage('images/smartIntroBox/1.png');
+		loader.addImage('images/smartIntroBox/2.png');
+		loader.addImage('images/smartIntroBox/3.png');
+		loader.addImage('images/smartIntroBox/4.png');
+		loader.addImage('images/smartIntroBox/5.png');
+		loader.addImage('images/smartIntroBox/l1.png');
+		loader.addImage('images/smartIntroBox/l11.png');
+		loader.addImage('images/smartIntroBox/l2.png');
+		loader.addImage('images/smartIntroBox/l22.png');
+		loader.addImage('images/smartIntroBox/l3.png');
+		loader.addImage('images/smartIntroBox/l33.png');
+		loader.addImage('images/smartIntroBox/l4.png');
+		loader.addImage('images/smartIntroBox/l44.png');
+		loader.addImage('images/smartIntroBox/l5.png');
+		loader.addImage('images/smartIntroBox/l55.png');
+		loader.addImage('images/smartIntroBox/line.png');
+		loader.addImage('images/smartBox/bg.jpg');
+		loader.addImage('images/smartBox/d1.png');
+		loader.addImage('images/smartBox/d2.png');
+		loader.addImage('images/smartBox/icon.png');
+		loader.addImage('images/smartBox/l1.png');
+		loader.addImage('images/smartBox/l2.png');
+		loader.addImage('images/smartBox/title.png');
+		loader.addImage('images/sidewayBox/1.png');
+		loader.addImage('images/sidewayBox/10.png');
+		loader.addImage('images/sidewayBox/11.png');
+		loader.addImage('images/sidewayBox/12.png');
+		loader.addImage('images/sidewayBox/13.png');
+		loader.addImage('images/sidewayBox/14.png');
+		loader.addImage('images/sidewayBox/15.png');
+		loader.addImage('images/sidewayBox/16.png');
+		loader.addImage('images/sidewayBox/17.png');
+		loader.addImage('images/sidewayBox/2.png');
+		loader.addImage('images/sidewayBox/3.png');
+		loader.addImage('images/sidewayBox/4.png');
+		loader.addImage('images/sidewayBox/5.png');
+		loader.addImage('images/sidewayBox/6.png');
+		loader.addImage('images/sidewayBox/7.png');
+		loader.addImage('images/sidewayBox/8.png');
+		loader.addImage('images/sidewayBox/9.png');
+		loader.addImage('images/sidewayBox/dialog.png');
+		loader.addImage('images/schoolBox/1.png');
+		loader.addImage('images/schoolBox/10.png');
+		loader.addImage('images/schoolBox/11.png');
+		loader.addImage('images/schoolBox/12.png');
+		loader.addImage('images/schoolBox/13.png');
+		loader.addImage('images/schoolBox/14.png');
+		loader.addImage('images/schoolBox/15.png');
+		loader.addImage('images/schoolBox/16.png');
+		loader.addImage('images/schoolBox/17.png');
+		loader.addImage('images/schoolBox/18.png');
+		loader.addImage('images/schoolBox/19.png');
+		loader.addImage('images/schoolBox/2.png');
+		loader.addImage('images/schoolBox/3.png');
+		loader.addImage('images/schoolBox/4.png');
+		loader.addImage('images/schoolBox/5.png');
+		loader.addImage('images/schoolBox/6.png');
+		loader.addImage('images/schoolBox/7.png');
+		loader.addImage('images/schoolBox/8.png');
+		loader.addImage('images/schoolBox/9.png');
+		loader.addImage('images/schoolBox/dialog.png');
 		loader.addImage('images/roadBox/close.png');
 		loader.addImage('images/roadBox/r1.jpg');
 		loader.addImage('images/roadBox/r2.png');
@@ -109,30 +161,23 @@ $(document).ready(function () {
 		loader.addImage('images/roadBox/r4.png');
 		loader.addImage('images/roadBox/r5.png');
 		loader.addImage('images/roadBox/r6.png');
+		loader.addImage('images/roadBox/r7.png');
 		loader.addImage('images/mapBox/1.png');
 		loader.addImage('images/mapBox/2.png');
 		loader.addImage('images/mapBox/3.png');
 		loader.addImage('images/mapBox/4.png');
 		loader.addImage('images/mapBox/5.png');
-		loader.addImage('images/mapBox/d1.png');
-		loader.addImage('images/mapBox/d2.png');
-		loader.addImage('images/mapBox/d3.png');
-		loader.addImage('images/mapBox/d4.png');
 		loader.addImage('images/followBox/1.png');
 		loader.addImage('images/followBox/2.png');
 		loader.addImage('images/followBox/3.png');
 		loader.addImage('images/followBox/4.png');
-		loader.addImage('images/followBox/5.png');
-		loader.addImage('images/followBox/6.png');
+		loader.addImage('images/followBox/back.png');
 		loader.addImage('images/followBox/bg.jpg');
-		loader.addImage('images/followBox/code.png');
-		loader.addImage('images/followBox/contact.png');
 
 		//实际加载进度
 		loader.addProgressListener(function (e) {
 			var per = Math.round(e.completedCount / e.totalCount * 50);
 			loadPer.html('LOADING ' + per + '%');
-			loadPerBar.css({ x: per / 100 * 6.08 + "rem" });
 		});
 
 		loader.addCompletionListener(function () {
@@ -145,22 +190,23 @@ $(document).ready(function () {
 	//模拟加载进度
 	function load_timer(per) {
 		per = per || 0;
-		per += imath.randomRange(1, 3);
+		per += 1;
 		per = per > 100 ? 100 : per;
 		loadPer.html('LOADING ' + per + '%');
-		loadPerBar.css({ x: per / 100 * 6.08 + "rem" });
 		if (per == 100) setTimeout(pageInit, 200);
-		else setTimeout(load_timer, 33, per);
+		else setTimeout(load_timer, 66, per);
 	}//edn func
 
 	//----------------------------------------页面逻辑代码----------------------------------------
 	var mapBox = $("#mapBox");
-	var followBox = $("#followBox");
 	var roadBox = $("#roadBox");
+	var tipsBox = $("#tipsBox");
+	var storeBox = $("#storeBox");
 	var sidewayBox = $("#sidewayBox");
 	var schoolBox = $("#schoolBox");
 	var smartBox = $("#smartBox");
-	var tipsBox = $("#tipsBox");
+	var smartIntroBox = $("#smartIntroBox");
+	var followBox = $("#followBox");
 
 	var mapX = 0;
 	var touchStartX = 0;
@@ -173,13 +219,10 @@ $(document).ready(function () {
 	var metro = mapBox.find(".metro");
 	var storeFlag = true, sidewayFlag = true, schoolFlag = true, metroFlag = true, moveFlag = true, showDirTipsFlag = true;
 
-	var sidewayBoxSwiper, schoolBoxSwiper, smartBoxSwiper, followBoxSwiper;
-
 	/**
 	 * 页面初始化
 	 */
 	function pageInit() {
-		SwiperInit();
 		openAnime();
 		eventInit();
 		// DevelopTest();
@@ -193,24 +236,145 @@ $(document).ready(function () {
 		loadingBox.hide();
 		// QABox.show();
 		// showMapBox();
-		setTimeout(function () {
-			showSmartBox();
-		}, 200)
 		// followBox.show();
 		// SwiperInit();
+		// showSidewayBox();
+		// showSchoolBox();
+		// smartBoxShow();
+		// smartIntroBoxShow();
+		// followBoxShow();
 	}
 
 	/**
 	 * 事件初始化
 	 */
 	function eventInit() {
-		$(".gotoFollow").on("click", gotoFollow);
 		$("#mapBox").on("click", showMapAnime);
 		$("#mapBox").on("touchstart", recordStart);
 		$("#mapBox").on("touchmove", moveMap);
-		$(".moreBtn").on("touchend", showFollowBox);
+		$(".backBtn").on("touchend", backToIndex);
 
 		$(".limitBtn").on("touchend", limitClick);
+	}
+
+	/**
+	 * 回到首页
+	 */
+	function backToIndex() {
+		location.href = "index.html?v=" + Math.random();
+	}
+
+	/**
+	 * smartBox显示
+	 */
+	function smartBoxShow() {
+		var box1 = smartBox.find(".box1");
+		var box2 = smartBox.find(".box2");
+		var dialog1 = smartBox.find(".dialog1");
+		var dialog2 = smartBox.find(".dialog2");
+		var ar = smartBox.find(".ar");
+
+		smartBox.show().css({ y: "100%" })
+			.transition({ y: 0 });
+
+		setTimeout(function () {
+			icom.fadeIn(box1, 500, function () {
+				dialog1.transition({ width: "5.38rem" }, 800);
+			})
+		}, 500);
+
+		setTimeout(function () {
+			icom.fadeOut(box1);
+			icom.fadeIn(box2, 500, function () {
+				dialog2.transition({ width: "5.38rem" }, 800);
+			})
+		}, 3200);
+
+		setTimeout(function () {
+			icom.fadeIn(box1);
+			icom.fadeIn(ar);
+			smartBox.one("swipeup", function () {
+				smartBox.transition({ y: "-100%" }, function () {
+					smartBox.hide();
+				});
+				smartIntroBoxShow();
+			});
+		}, 5500);
+	}
+
+	/**
+	 * smart介绍页
+	 */
+	function smartIntroBoxShow() {
+		smartIntroBoxUiInit();
+
+		var block = smartIntroBox.find(".block");
+		var ar = smartIntroBox.find(".ar");
+
+		smartIntroBox.show().css({ y: "100%" })
+			.transition({ y: 0 });
+
+		block.each(function (index) {
+			var letter1 = $(this).find(".letter1");
+			var letter2 = $(this).find(".letter2");
+			var icon = $(this).find(".icon");
+
+			letter1.css({ scale: 0 }).transition({ opacity: 1, scale: 1, delay: 300 * index }, 800, function () {
+				letter1.addClass("jumping");
+			});
+			letter2.css({ x: "-0.5rem" }).transition({ opacity: 1, x: 0, delay: 300 * index }, 800);
+			icon.transition({ opacity: 1, delay: 300 * index }, 800);
+		});
+
+		setTimeout(function () {
+			icom.fadeIn(ar);
+			smartIntroBox.one("swipeup", function () {
+				smartIntroBox.transition({ y: "-100%" }, function () {
+					smartIntroBox.hide();
+				});
+				followBoxShow();
+			});
+		}, 3200);
+	}
+
+	/**
+	 * smartIntroUI初始化
+	 */
+	function smartIntroBoxUiInit() {
+		var cont = "";
+		for (var i = 1; i <= 5; i++) {
+			cont += '<div class="block"><img src="images/smartIntroBox/' + i + '.png" class="icon hide"><img src="images/smartIntroBox/l' + i + '.png" class="letter letter1 hide"><img src="images/smartIntroBox/l' + i + i + '.png" class="letter letter2 hide"></div>';
+			if (i != 5) cont += '<img src="images/smartIntroBox/line.png" class="line">';
+		}
+		smartIntroBox.find(".cont").append(cont);
+	}
+
+	/**
+	 * 关注页面初始化
+	 */
+	function followBoxShow() {
+		followBox.show().css({ y: "100%" })
+			.transition({ y: 0 });
+		var follow1 = followBox.find(".follow1");
+		var follow2 = followBox.find(".follow2");
+		var follow3 = followBox.find(".follow3");
+		var follow4 = followBox.find(".follow4");
+		var arr = [follow1, follow2, follow3, follow4];
+		var now = 0;
+		var animeFlag = false;
+
+		followBox.on("swipeup", function () {
+			if (now < 3 && !animeFlag) {
+				animeFlag = true;
+				arr[now].transition({ y: "-100%" }, function () {
+					arr[now].hide();
+					animeFlag = false;
+					now++;
+				});
+				arr[now + 1].show().css({ y: "100%" })
+					.transition({ y: 0 });
+			}
+		})
 	}
 
 	/**
@@ -263,30 +427,15 @@ $(document).ready(function () {
 			storeFlag = false;
 			store.removeClass("updowning3");
 			mapBox.find(".hand1").hide();
-			mapBox.find(".d4").transition({ height: "100%" }, 300);
-			mapBox.find(".d1").transition({ width: "100%", delay: 300 }, 600);
-			mapBox.find(".d2").transition({ width: "100%", delay: 900 }, 600);
-			mapBox.find(".d3").transition({ width: "100%", delay: 1500 }, 600, function () {
-				setTimeout(function () {
-					mapBoxAnime("metro");
-				}, 1000);
-			});
+			showStoreBox();
 		}
 		else if (nowStep == "sideway" && sidewayFlag) {
 			sidewayFlag = false;
-			icom.popOn(sidewayBox, {
-				onClose: function () {
-					mapBoxAnime("school");
-				}
-			});
+			showSidewayBox();
 		}
 		else if (nowStep == "school" && schoolFlag) {
 			schoolFlag = false;
-			icom.popOn(schoolBox, {
-				onClose: function () {
-					showSmartBox();
-				}
-			});
+			showSchoolBox();
 		}
 		else if (nowStep == "metro" && metroFlag) {
 			metroFlag = false;
@@ -295,140 +444,106 @@ $(document).ready(function () {
 	}
 
 	/**
-	 * 显示SmartBox
+	 * 显示周边社群
 	 */
-	function showSmartBox() {
-		icom.fadeIn(smartBox);
-		var title = smartBox.find(".title");
-		var c1 = smartBox.find(".c1");
-		var c2 = smartBox.find(".c2");
-		var c3 = smartBox.find(".c3");
-		var ar = smartBox.find(".ar");
-		var introBox = smartBox.find(".introBox");
-		var moreSwiperBox = smartBox.find(".moreSwiperBox");
-
-		var time = 800;
-
-		title.css({ y: "1rem" }).transition({ opacity: 1, y: 0, delay: 300 }, time);
-		c2.transition({ opacity: 1, delay: time }, time);
-		c1.addClass("Emphasize1");
-		c3.addClass("Emphasize2");
-		ar.transition({ opacity: 1, delay: 2000}, 300, function () {
-			smartBox.one("swipeup", function () {
-				introBox.transition({ y: "-100%" });
-				moreSwiperBox.show().css({ y: "100%" }).transition({ y: 0 });
-			});
-		});
+	function showSidewayBox() {
+		var dialog = sidewayBox.find(".dialog");
+		sidewayBox.show();
+		icom.fadeOut(mapBox.find(".hand3"));
+		peopleAnime("sidewayBox", 17);
+		dialog.transition({ "height": "6.01rem", delay: 1500 }, 800);
+		setTimeout(function () {
+			icom.fadeOut(sidewayBox);
+			mapBoxAnime("school");
+		}, 5000);
 	}
 
 	/**
-	 * 显示楼层页面
+	 * 显示学校社群
 	 */
-	function showFollowBox() {
-		mapBox.hide();
-		followBox.show();
-		icom.fadeOut(smartBox);
+	function showSchoolBox() {
+		var dialog = schoolBox.find(".dialog");
+		var ar = mapBox.find(".ar");
+		schoolBox.show();
+		icom.fadeOut(mapBox.find(".hand4"));
+		peopleAnime("schoolBox", 19);
+		dialog.transition({ "height": "5.9rem", delay: 1500 }, 800);
+		setTimeout(function () {
+			icom.fadeOut(schoolBox);
+			school.removeClass("lighting");
+			icom.fadeIn(ar);
+			mapBox.one("swipeup", function () {
+				mapBox.transition({ y: "-100%" }, function () {
+					mapBox.hide();
+				});
+				smartBoxShow();
+			});
+		}, 5000);
+	}
+
+	/**
+	 * 小人的动画
+	 */
+	function peopleAnime(box, num) {
+		var ele = box == "schoolBox" ? schoolBox : sidewayBox;
+		for (var i = 1; i <= num; i++) {
+			var people = $("<img>", { "class": "people hide", "src": "images/" + box + "/" + i + ".png" });
+			ele.append(people);
+			people.css({ x: imath.randomRange(-20, 20) }).transition({ x: 0, opacity: 1, delay: imath.randomRange(0, 1000) }, 800);
+		}
+	}
+
+	/**
+	 * 显示商场页面
+	 */
+	function showStoreBox() {
+		var word1 = storeBox.find(".word1");
+		var word2 = storeBox.find(".word2");
+		var ar = storeBox.find(".ar");
+		icom.fadeIn(storeBox);
+		word1.transition({ width: "100%", delay: 500 }, 1000);
+		word2.transition({ width: "100%", delay: 1500 }, 1000, function () {
+			icom.fadeIn(ar);
+			storeBox.one("swipeup", function () {
+				storeBox.transition({ y: "-100%" }, function () {
+					storeBox.hide();
+				})
+				mapBoxAnime("metro");
+			})
+		});
 	}
 
 	/**
 	 * 地铁的动画
 	 */
 	function metroAnime() {
-		icom.popOn(roadBox, {
-			onClose: function () {
-				mapBoxAnime("sideway");
-			}
-		});
+		icom.fadeIn(roadBox);
 
 		var metro = roadBox.find(".metro");
 		var station = roadBox.find(".station");
 		var location = roadBox.find(".location");
 		var pos = roadBox.find(".pos");
 		var point = roadBox.find(".point");
+		var ar = roadBox.find(".ar");
 
-		metro.transition({ height: "16.51rem", delay: 500 }, 1500);
-		location.transition({ opacity: 1, delay: 1000 }, 200);
-		pos.transition({ opacity: 1, delay: 2500 });
+		metro.transition({ height: "16.51rem", delay: 500 }, 1000);
+		location.transition({ opacity: 1, delay: 700 }, 200);
+		pos.transition({ opacity: 1, delay: 1500 });
 
-		point.transition({ opacity: 1, delay: 3500},function(){
+		point.transition({ opacity: 1, delay: 2000 }, function () {
 			point.addClass("lighting2");
 		});
 
-		metro.find("img").eq(1).transition({ opacity: 0, delay: 5000 });
-		station.transition({ height: "12.17rem", delay: 5000 }, 3000, 'linear', function () {
-			icom.fadeIn(roadBox.find(".close"));
+		metro.find("img").eq(1).transition({ opacity: 0, delay: 3000 });
+		station.transition({ height: "12.17rem", delay: 3000 }, 1500, 'linear', function () {
+			icom.fadeIn(ar);
+			roadBox.one("swipeup", function () {
+				roadBox.transition({ y: "-120%" }, function () {
+					roadBox.hide();
+				})
+				mapBoxAnime("sideway");
+			})
 		});
-	}
-
-	/**
-	 * 去到相应楼层
-	 */
-	function gotoFollow() {
-		var id = $(this).attr("data-val");
-		followBoxSwiper.slideTo(id);
-	}
-
-	/**
-	 * Swiper初始化
-	 */
-	function SwiperInit() {
-		sidewayBoxSwiper = new Swiper('#sidewayBoxSwiper', {
-			// autoplay: true,
-			// delay: 1000,
-			loop: true,
-			pagination: {
-				el: '.swiper-pagination'
-			}
-		});
-
-		schoolBoxSwiper = new Swiper('#schoolBoxSwiper', {
-			// autoplay: true,
-			// delay: 1000,
-			loop: true,
-			pagination: {
-				el: '.swiper-pagination'
-			}
-		});
-
-		var now = 0;
-		var block = smartBox.find(".word");
-		smartBoxSwiper = new Swiper('#smartBoxSwiper', {
-			// autoplay: true,
-			// delay: 1000,
-			loop: false,
-			pagination: {
-				el: '.swiper-pagination'
-			},
-			on: {
-				transitionStart: function () {
-					if (smartBoxSwiper && now != smartBoxSwiper.realIndex) {
-						now = smartBoxSwiper.realIndex;
-						block.transition({ opacity: 0 }, 150, function () {
-							block[0].src = "images/smartBox/" + (now + 1) + ".png";
-						});
-						block.transition({ opacity: 1, delay: 150 }, 150);
-					}
-				}
-			}
-		});
-
-		followBoxSwiper = new Swiper('#followBoxSwiper', {
-			// autoplay: true,
-			// delay: 1000,
-			loop: false,
-			direction: "vertical",
-			on: {
-				transitionStart: showDirTips
-			}
-		});
-
-		setTimeout(function () {
-			followBox.removeClass("hide").hide();
-			sidewayBox.removeClass("hide").hide();
-			schoolBox.removeClass("hide").hide();
-			smartBox.removeClass("hide").hide();
-			smartBox.find(".moreSwiperBox").removeClass("hide").hide();
-		}, 100);
 	}
 
 	/**
@@ -437,16 +552,12 @@ $(document).ready(function () {
 	function openAnime() {
 		var part1 = loadingBox.find(".part1");
 		var part2 = loadingBox.find(".part2");
-		var logo = loadingBox.find(".logo2");
-		var baoshan = loadingBox.find(".baoshan");
+		var map = part2.find(".map");
 		icom.fadeOut(part1);
-		icom.fadeIn(logo);
 		icom.fadeIn(part2, 500, function () {
-			baoshan.transition({x: "-0.6rem", y: "2rem"}, 1000).transition({ scale: 5, x: "-4rem", y: "10rem"}, 2500,"linear");
-			part2.find(".map").transition({ scale: 1.2,delay:1000}, 2500,"linear");
-			setTimeout(function(){
+			map.transition({ scale: 1.5, y: "1rem" }, 1500, "linear", function () {
 				showMapBox();
-			},2500);
+			});
 		});
 	}
 
@@ -505,9 +616,9 @@ $(document).ready(function () {
 		else if (step == "sideway") {
 			map.transition({ x: 0 }, 200);
 			moveX = 0;
+			mapBox.find(".hand2").hide();
 			metro.removeClass("lighting");
 			sideway.addClass("lighting");
-			mapBox.find(".hand2").hide();
 			mapBox.find(".hand3").transition({ opacity: 1 });
 		}
 		else if (step == "school") {
@@ -515,7 +626,6 @@ $(document).ready(function () {
 			moveX = 0;
 			sideway.removeClass("lighting");
 			school.addClass("lighting");
-			mapBox.find(".hand3").hide();
 			mapBox.find(".hand4").transition({ opacity: 1 });
 		}
 	}
