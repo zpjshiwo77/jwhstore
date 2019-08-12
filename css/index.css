@@ -127,6 +127,22 @@ img{
 	100%{transform: translate(0, 0);}
 }
 
+.updowning4{
+	-webkit-animation: updowning4 1.5s ease infinite;
+}
+.updowning5{
+	-webkit-animation: updowning4 1.5s 0.5s ease infinite;
+}
+.updowning6{
+	-webkit-animation: updowning4 1.5s 1s ease infinite;
+}
+@-webkit-keyframes updowning4{
+	0%{transform: translate(0, 0);}
+	25%{transform: translate(0, -0.2rem);}
+	50%{transform: translate(0, 0);}
+	100%{transform: translate(0, 0);}
+}
+
 .Emphasize1{
 	-webkit-animation: Emphasize 1.5s ease forwards;
 }
@@ -572,7 +588,7 @@ aside .close{
 	top: 50%;
 	left: 50%;
 	width: 7.06rem;
-	transform: translate(-50%, -50%);
+	margin: -5.56rem 0 0 -3.53rem;
 }
 #followBox .follow4{
 	background:url(../images/followBox/bg.jpg) no-repeat;
@@ -591,8 +607,8 @@ aside .close{
 	position: absolute;
 	top: 0.24rem;
 	left: 0.24rem;
-	width: 0.58rem;
-	height: 0.58rem;
+	width: 1rem;
+	height: 1rem;
 	z-index: 9;
 }
 /* followBox end */

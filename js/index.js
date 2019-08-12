@@ -171,6 +171,13 @@ $(document).ready(function () {
 		loader.addImage('images/followBox/2.png');
 		loader.addImage('images/followBox/3.png');
 		loader.addImage('images/followBox/4.png');
+		loader.addImage('images/followBox/l1.png');
+		loader.addImage('images/followBox/l2.png');
+		loader.addImage('images/followBox/l3.png');
+		loader.addImage('images/followBox/l4.png');
+		loader.addImage('images/followBox/l5.png');
+		loader.addImage('images/followBox/l6.png');
+		loader.addImage('images/followBox/l7.png');
 		loader.addImage('images/followBox/back.png');
 		loader.addImage('images/followBox/bg.jpg');
 
@@ -288,10 +295,10 @@ $(document).ready(function () {
 			icom.fadeIn(box2, 500, function () {
 				dialog2.transition({ width: "5.38rem" }, 800);
 			})
-		}, 3200);
+		}, 4500);
 
 		setTimeout(function () {
-			icom.fadeIn(box1);
+			// icom.fadeIn(box1);
 			icom.fadeIn(ar);
 			smartBox.one("swipeup", function () {
 				smartBox.transition({ y: "-100%" }, function () {
@@ -375,23 +382,19 @@ $(document).ready(function () {
 					.transition({ y: 0 });
 			}
 		})
-	}
 
-	/**
-	 * 显示旋转的提示
-	 */
-	function showDirTips() {
-		if (showDirTipsFlag) {
-			showDirTipsFlag = false;
-			timer = setTimeout(function () {
-				icom.fadeOut($("#turnturnBoxLandscapeBox"));
-			}, 5000);
-			icom.popOn($("#turnturnBoxLandscapeBox"), {
-				onClose: function () {
-					clearTimeout(timer);
-				}
-			});
-		}
+		followBox.on("swipedown", function () {
+			if (now > 0 && !animeFlag) {
+				animeFlag = true;
+				arr[now].transition({ y: "100%" }, function () {
+					arr[now].hide();
+					animeFlag = false;
+					now--;
+				});
+				arr[now - 1].show().css({ y: "-100%" })
+					.transition({ y: 0 });
+			}
+		})
 	}
 
 	/**
