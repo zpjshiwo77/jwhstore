@@ -291,7 +291,7 @@ $(document).ready(function () {
 		}, 500);
 
 		setTimeout(function () {
-			icom.fadeOut(box1);
+			// icom.fadeOut(box1);
 			icom.fadeIn(box2, 500, function () {
 				dialog2.transition({ width: "5.38rem" }, 800);
 			})
