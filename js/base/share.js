@@ -10,9 +10,9 @@ var ishare=importShare();
 	ishare.content={
 		link:ishare.url,
 		image:ishare.url+'images/share.jpg?v='+Math.random(),
-		title:$('title').html(),
-		friend:'发送给朋友的分享文案',
-		timeline:'发送到给朋友圈的分享文案'
+		title:"Leisure time | 一分钟带你逛遍经纬汇！",
+		friend:'这可能是你了解经纬汇用时最短的一次...',
+		timeline:'Leisure time | 一分钟带你逛遍经纬汇！'
 	};
 	console.log(ishare.content);
 	if(os.weixin){
